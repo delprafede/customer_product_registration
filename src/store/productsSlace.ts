@@ -1,17 +1,18 @@
 import { type StateCreator } from "zustand"
-import type { Products } from "../types"
-import { createProducts } from "../api/products"
+import type { GetProducts, Products } from "../types"
+import { createProducts, updateProduct } from "../api/products"
 
 
-// import { set } from "react-hook-form"
+
+
 
 
 
 
 export type ProductSliceType = {
-    products: Products,
-    // setProducts: (products: Product[]) => void,
+    products: Products 
     addProduct: (product: Products) => void,
+    editProduct: (id: GetProducts["id"], product:Products) => void,
 
 }
 
@@ -21,6 +22,9 @@ export const createProductSlice: StateCreator<ProductSliceType> = () => ({
 
     addProduct: (product) => {
       createProducts(product)
-      
+    },
+    editProduct: (id, product) => {
+      updateProduct(id, product)
+     
     }
 })

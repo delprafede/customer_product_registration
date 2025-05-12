@@ -13,7 +13,7 @@ export const loader = async () => {
 const Products = () => {
   // useLoaderData es un hook que se utiliza para acceder a los datos devueltos por la función de carga
   const products = useLoaderData() as GetProducts[];
-  console.log(products);
+
 
   return (
     <>
