@@ -1,5 +1,5 @@
-import { Link, useLoaderData } from "react-router-dom";
-import { getProducts } from "../api/products";
+import { Link, useLoaderData, type ActionFunctionArgs } from "react-router-dom";
+import { getProducts, updateAvailableId } from "../api/products";
 import DetailsProducts from "../components/DetailsProducts";
 import type { GetProducts } from "../types";
 
@@ -9,11 +9,15 @@ export const loader = async () => {
   const products = await getProducts();
   return products;
 };
+export async function action({ request }: ActionFunctionArgs) {
+  const data = Object.fromEntries(await request.formData());
+  await updateAvailableId(+data.id);
+  return {};
+}
 
 const Products = () => {
   // useLoaderData es un hook que se utiliza para acceder a los datos devueltos por la función de carga
   const products = useLoaderData() as GetProducts[];
-
 
   return (
     <>
@@ -40,7 +44,6 @@ const Products = () => {
             {products.map((product: GetProducts) => (
               <DetailsProducts key={product.id} {...product} />
             ))}
-          
           </tbody>
         </table>
       </div>

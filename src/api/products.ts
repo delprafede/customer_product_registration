@@ -30,7 +30,6 @@ export const getProductId = async (id: number) => {
     // if (result.success) {
     //     return result.data
     // }
-
     return data.data
 }
 export const updateProduct = async (id: number, product: Products) => {
@@ -40,6 +39,24 @@ export const updateProduct = async (id: number, product: Products) => {
     // if (result.success) {
     //     return result.data
     // }
-    console.log(data)
+    return data.data
+}
+
+export const deleteProductId = async (id: number) => {
+    const URL = `${import.meta.env.VITE_API_URL}/product/${id}`;
+    const { data } = await axios.delete(URL)
+    // const result = producDetailsResAPi.safeParse(data)
+    // if (result.success) {
+    //     return result.data
+    // }
+    return data.data
+}
+export const updateAvailableId = async (id: number) => {
+    const URL = `${import.meta.env.VITE_API_URL}/product/${id}`;
+    const { data } = await axios.patch(URL)
+    // const result = producDetailsResAPi.safeParse(data)
+    // if (result.success) {
+    //     return result.data
+    // }
     return data.data
 }

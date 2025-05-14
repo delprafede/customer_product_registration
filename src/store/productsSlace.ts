@@ -1,6 +1,6 @@
 import { type StateCreator } from "zustand"
 import type { GetProducts, Products } from "../types"
-import { createProducts, updateProduct } from "../api/products"
+import { createProducts, deleteProductId, updateProduct } from "../api/products"
 
 
 
@@ -13,7 +13,8 @@ export type ProductSliceType = {
     products: Products 
     addProduct: (product: Products) => void,
     editProduct: (id: GetProducts["id"], product:Products) => void,
-
+    deleteProduct: (id: GetProducts["id"]) => void,
+    
 }
 
 
@@ -25,6 +26,9 @@ export const createProductSlice: StateCreator<ProductSliceType> = () => ({
     },
     editProduct: (id, product) => {
       updateProduct(id, product)
-     
-    }
+    },
+    deleteProduct: (id) => {
+     deleteProductId(id)
+    },
+  
 })
