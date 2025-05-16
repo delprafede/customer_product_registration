@@ -17,6 +17,7 @@ import { useAppStore } from "../store/useAppStore";
   type InputData = {
     name: string;
     price: number;
+    available: boolean;
   };
   const onSubmit = handleSubmit((data) => {
     addProduct(data);
