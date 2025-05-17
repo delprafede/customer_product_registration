@@ -21,7 +21,10 @@ import { useAppStore } from "../store/useAppStore";
   };
   const onSubmit = handleSubmit((data) => {
     addProduct(data);
-    navigate("/");
+  const timer =  setTimeout(() => {
+      navigate("/");
+    }, 2000);
+    return () => clearTimeout(timer);
     
   });
 

@@ -7,8 +7,7 @@ import type { GetProducts } from "../types";
 // Obtendrá los productos de la API y los devolverá al componente.
 export const loader = async () => {
   const products = await getProducts();
-  // return products;
-  console.log(products)
+  return products;
 };
 export async function action({ request }: ActionFunctionArgs) {
   const data = Object.fromEntries(await request.formData());
@@ -22,6 +21,7 @@ const Products = () => {
 
   return (
     <>
+    {products.length === 0 && <h2 className="text-4xl font-extrabold text-slate-500">No hay productos</h2>}
       <div className="flex justify-between">
         <h2 className=" text-4xl font-extrabold text-slate-500 ">Productos</h2>
         <Link

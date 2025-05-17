@@ -63,7 +63,7 @@ const EditProducts = () => {
     <>
       <div className="flex justify-between">
         <h2 className=" text-4xl font-extrabold text-slate-500 ">
-          Registrar Productos
+          Editar Productos
         </h2>
         <Link
           to="/"
