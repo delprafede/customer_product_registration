@@ -7,7 +7,8 @@ import type { GetProducts } from "../types";
 // Obtendrá los productos de la API y los devolverá al componente.
 export const loader = async () => {
   const products = await getProducts();
-  return products;
+  // return products;
+  console.log(products)
 };
 export async function action({ request }: ActionFunctionArgs) {
   const data = Object.fromEntries(await request.formData());
